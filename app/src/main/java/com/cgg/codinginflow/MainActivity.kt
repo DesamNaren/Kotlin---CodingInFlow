@@ -3,7 +3,6 @@ package com.cgg.codinginflow
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.math.log
 
 private var TAG: String? = MainActivity::class.java.canonicalName
 private var Value: String? = MainActivity::class.java.canonicalName
@@ -134,7 +133,7 @@ fun loops() {
     } while (i != 1)
 
     i = 8
-    var times =0;
+    var times = 0;
 
     while (i > 1) {
         i /= 2
@@ -142,6 +141,62 @@ fun loops() {
         times++
     }
 
-    Log.e(TAG, "loops: 100/2 times: $times" )
+    Log.e(TAG, "loops: 100/2 times: $times")
+
+
+    for (x in 1..10) {
+        if (x in 3..7) continue // if x is in between 3 to 7 it will not execute below lines just continue the loop
+        Log.e(TAG, "loops: $x")
+    }
+
+
+    var time = 13
+    var timeOp = ""
+
+    if (time in 0..11) {
+        timeOp = "Good Morning"
+    } else if (time == 12) {
+        timeOp = "Good Afternoon"
+    } else {
+        timeOp = "Good Day"
+    }
+
+    Log.e(TAG, "loops: $timeOp")
+
+    time = 12
+    timeOp = when (time) {
+        in 0..11 -> "Good Morning"
+        12 -> "Good Afternoon"
+        else -> "Good Day"
+    }
+    Log.e(TAG, "loops test: $timeOp")
+
+    val charTime = 'p'
+    timeOp = when (charTime) {
+        in 'a'..'m' -> "Before N"
+        'n' -> "Equal"
+        'a', 'p' -> "YOYO"
+        else -> "After N"
+    }
+    Log.e(TAG, "loops test: $timeOp")
+
+    val x = 10
+    val y = 10
+
+
+    val maxVal = testMax(x, y)
+    Log.e(TAG, "testMax: $maxVal")
 
 }
+
+fun testMax(x: Int, y: Int): String {
+    return when {
+        x > y -> "Max Value is X $x"
+        x < y -> "Max Value is y $y"
+        else -> "Equal X $x and Y $y"
+    }
+
+    testMaxRes(9,99)
+}
+
+fun testMaxRes(x: Int, y: Int) = if (x > y) x else y
