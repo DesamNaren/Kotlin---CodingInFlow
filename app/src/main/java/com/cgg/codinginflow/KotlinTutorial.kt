@@ -1,11 +1,33 @@
 package com.cgg.codinginflow
 
-var topLevelVariable="bbbb" // top level variables must be assigned to value
+var topLevelVariable = "bbbb" // top level variables must be assigned to value
+
+val v = changeVal()
+//const val c = changeVal()-- CPE (Compile Time Error)
+
+
+//You can declare the ‘const’ variable only if a variable is
+//1. top-level or member of the object or member of a companion object.
+//2. must be initialized with a String type or primitive type.
+//3. no custom getter.
+
+//Kotlin
+//Difference between val and const in Kotlin
+//‘const’ is also known as a Compile-time constant.
+// So you cannot assign value to the ‘const’ type variable on runtime.
+// On the other hand, ‘val’ type variable can be assigned on runtime.
+// That’s why we can say ‘val’ type constants are runtime constants.
+
+fun changeVal(): Int {
+    return 11
+}
 
 fun main() {
+
+
     println("Om Sai Ram$$")
 
-    var localVariable:String // local variables do not require a value to assign, but type has to define
+    var localVariable: String // local variables do not require a value to assign, but type has to define
 
     val x = 10
     val y = 15
@@ -25,6 +47,18 @@ fun main() {
 
     getLarge(*array)
 
+
+    userObj()
+}
+
+
+fun userObj() {
+    val user = User("Naren", 30)
+    println("${user.name} ${user.age}")
+}
+
+
+class User(val name: String, val age: Int) {
 
 }
 
@@ -61,3 +95,5 @@ fun getTotal(vararg numbers: Int) {
     for (number in numbers) sum += number
     println("$sum")
 }
+
+
